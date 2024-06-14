@@ -4,7 +4,7 @@ import scrapy
 
 
 class NationalLibMedSpider(scrapy.Spider):
-    name = "pmc"
+    name = "pubmed"
     start_urls = ["https://www.ncbi.nlm.nih.gov/pmc/?term=kcnq5"]
     base_url = 'https://www.ncbi.nlm.nih.gov'
 
