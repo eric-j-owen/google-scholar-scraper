@@ -33,8 +33,11 @@ class NationalLibMedSpider(scrapy.Spider):
                 "citation": f'{citation["short_authors"]} {citation["journal"]} PMID: {citation["pmid"]}',
                 "url": f'{self.base_url}{article.css("a::attr(href)").get()}'
             }
-        self.page += 1
-        next_url = f'{self.base_url}/?term={self.search_term}&page={self.page}'
+
+        self.url["page"] += 1
+        next_url = (
+            f'{self.url["base"]}/?term={self.url["search_term"]}&page={self.url["page"]}')
+
         yield response.follow(next_url, self.parse)
 # output file command
 # scrapy crawl pmc -O articles.json
